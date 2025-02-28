@@ -11,13 +11,13 @@ import google.generativeai as genai
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-# ✅ Updated to use Gemini 1.5
+#  Updated to use Gemini 1.5
 def get_gemini_response(input_text, pdf_content, prompt):
     model = genai.GenerativeModel('gemini-1.5-flash')  # 🔄 Switched to the latest model
     response = model.generate_content([input_text, pdf_content[0], prompt])
     return response.text
 
-# ✅ Proper PDF processing (handles multiple pages)
+# Proper PDF processing (handles multiple pages)
 def input_pdf_setup(uploaded_file):
     if uploaded_file is not None:
         images = pdf2image.convert_from_bytes(uploaded_file.read())  # Convert PDF to images
@@ -34,7 +34,7 @@ def input_pdf_setup(uploaded_file):
         st.error("No file uploaded. Please upload a PDF.")
         return None
 
-# ✅ Streamlit UI
+# Streamlit UI
 st.set_page_config(page_title="ATS Resume Expert")
 st.header("ATS Tracking System")
 
@@ -47,7 +47,7 @@ submit1 = st.button("Tell Me About the Resume")
 submit2 = st.button("How Can I Improve My Skills")
 submit3 = st.button("Percentage Match")
 
-# ✅ Your Exact AI Prompts
+#  Your Exact AI Prompts
 input_prompt1 = """
 You are an experienced Technical Human Resource Manager in the field of Data Science, Full Stack Web Development, 
 Big Data Engineering, DevOps, and Data Analysis. Your task is to review the provided resume against the job description for these profiles. 
@@ -67,7 +67,7 @@ Give me the percentage of match if the resume aligns with the job description.
 First, the output should show the percentage match, then list the missing keywords, and finally provide your overall thoughts.
 """
 
-# ✅ Handle button clicks and responses
+#  Handle button clicks and responses
 if uploaded_file is not None:
     st.success("PDF uploaded successfully!")
     pdf_content = input_pdf_setup(uploaded_file)  # Convert PDF to images

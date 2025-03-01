@@ -1,3 +1,4 @@
-#create an .environment file in ur folder 
+#create an .env file in ur folder 
 visite the site--https://aistudio.google.com/app/apikey
-# generate key and copy paste it in ur env file 
+# generate key and copy it.
+#initialise "google_api_key" in d .env file and paste it in ur env file 
